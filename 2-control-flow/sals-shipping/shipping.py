@@ -1,31 +1,43 @@
-# Sal's Shipping
-# Sonny Li
+print("Thank you for choosing Sal's Super Speedy Shipping!\nWe Ship Packages & Deliver Smiles :)\n")
+print("Here is a cost breakdown for your shipment...\n")
 
-weight = 80
+weight = 3.2
 
-# Ground Shipping 🚚
+flat_charge = 20
 
+#Ground Shipping
 if weight <= 2:
-  cost_ground = weight * 1.5 + 20
-elif weight <= 6:
-  cost_ground = weight * 3.00 + 20
-elif weight <= 10:
-  cost_ground = weight * 4.00 + 20
+  ground_cost = (1.5 * weight) + flat_charge
+elif weight > 2 and weight <= 6:
+  ground_cost = (3 * weight) + flat_charge
+elif weight > 6 and weight <= 10:
+  ground_cost = (4 * weight) + flat_charge
 else:
-  cost_ground = weight * 4.75 + 20
+  ground_cost = (4.75 * weight) + flat_charge
 
-print("Ground Shipping $", cost_ground)
-      
-# Ground Shipping Premimum 🚚💨
-
-cost_ground_premium = 125.00
-
-print("Ground Shipping Premimium $", cost_ground_premium)
-
-# Drone Shipping 🛸
-
+#Drone Shipping
 if weight <= 2:
-  cost_drone = weight * 4.5
+  drone_cost = 4.5 * weight
+elif weight > 2 and weight <= 6:
+  drone_cost = 9 * weight
+elif weight > 6 and weight <= 10:
+  drone_cost = 12 * weight
+else:
+  drone_cost = 14.25 * weight
+
+#Ground Shipping Premium
+ground_ship_premium = 125
+
+print(f"It will cost ${ground_cost:.2f} to ship this with Ground Shipping.")
+print(f"It will cost ${ground_ship_premium:.2f} to ship this with Ground Shipping Premium")
+print(f"It will cost ${drone_cost:.2f} to ship this with Drone Shipping.\n")
+
+if ground_cost < ground_ship_premium and ground_cost < drone_cost:
+  print("We recommend using Ground Shipping. That would be most cost effective.")
+elif ground_cost > ground_ship_premium and ground_ship_premium < drone_cost:
+  print("We recommend using Ground Shipping Premium. That would be most cost effective due to the flat rate pricing.")
+elif ground_cost > drone_cost and ground_ship_premium > drone_cost:
+  print("You should try out our new Drone Shipping option! That would be most cost effective!")
 elif weight <= 6:
   cost_drone = weight * 9.00
 elif weight <= 10:
